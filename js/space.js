@@ -1,16 +1,16 @@
-let dataArray = [];
+var dataArray = [];
 
 function show(array){
     let container = document.getElementById("contenedor");
     let content = "";
     for(let i = 0; i < array.length; i++){
         content += `
-        <div class="card" style="width: 18rem;">
-        <img src="${array[i].media_type}" class="card-img-top" alt="...">
+        <div class="card">
+        <img src="${array[i].links[0].href}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">${array[i].data[0].title}</h5>
+          <p class="card-text">${array[i].data[0].description}</p>
+          <p> ${array[i].data[0].date_created} </p> 
         </div>
       </div>
         `;
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         .then(data => {
             dataArray = data.collection.items;
             console.log(dataArray);
+            console.log(dataArray[0].links[0].href)
             show(dataArray);
         })
     })
