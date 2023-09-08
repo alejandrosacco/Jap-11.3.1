@@ -19,9 +19,9 @@ function show(array){
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    let input = document.getElementById("inputBuscar").value;
     let button = document.getElementById("btnBuscar");
     button.addEventListener("click", ()=>{
+        let input = document.getElementById("inputBuscar").value;
         let link = "https://images-api.nasa.gov/search?q=" + input;
         fetch(link)
         .then(response => response.json())
